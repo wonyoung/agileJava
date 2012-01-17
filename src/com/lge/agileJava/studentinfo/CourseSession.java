@@ -1,4 +1,4 @@
-package com.lge.agileJava;
+package com.lge.agileJava.studentinfo;
 
 import java.util.*;
 
@@ -8,7 +8,7 @@ import java.util.*;
  * @author wonyoung.jang
  * 
  */
-class CourseSession {
+public class CourseSession {
 	private String department;
 	private String number;
 	private Date startDate;
@@ -21,7 +21,7 @@ class CourseSession {
 	 * @param number
 	 * @param startDate the date on which the CourseSession begins
 	 */
-	CourseSession(String department, String number, Date startDate) {
+	public CourseSession(String department, String number, Date startDate) {
 		// TODO Auto-generated constructor stub
 		this.department = department;
 		this.number = number;
@@ -43,7 +43,7 @@ class CourseSession {
 		return students.size();
 	}
 
-	void enroll(Student student) {
+	public void enroll(Student student) {
 		// TODO Auto-generated method stub
 		students.add(student);
 	}
@@ -72,7 +72,7 @@ class CourseSession {
 		return startDate;
 	}
 
-	ArrayList<Student> getAllStudents() {
+	public ArrayList<Student> getAllStudents() {
 		return students;
 	}
 }

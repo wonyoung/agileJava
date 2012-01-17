@@ -1,4 +1,4 @@
-package com.lge.agileJava;
+package com.lge.agileJava.studentinfo;
 
 public class Student {
 	private String name;

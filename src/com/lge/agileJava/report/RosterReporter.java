@@ -1,4 +1,8 @@
-package com.lge.agileJava;
+package com.lge.agileJava.report;
+
+import com.lge.agileJava.studentinfo.CourseSession;
+import com.lge.agileJava.studentinfo.Student;
+
 
 public class RosterReporter {
 	static final String NEWLINE = System.getProperty("line.separator");

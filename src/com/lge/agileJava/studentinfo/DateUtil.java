@@ -1,11 +1,11 @@
-package com.lge.agileJava;
+package com.lge.agileJava.studentinfo;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class DateUtil {
-	Date createDate(int year, int month, int date) {
+	public Date createDate(int year, int month, int date) {
 		GregorianCalendar calendar = new GregorianCalendar();
 		calendar.clear();
 		calendar.set(Calendar.YEAR, year);

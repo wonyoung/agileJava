@@ -1,4 +1,4 @@
-package com.lge.agileJava;
+package com.lge.agileJava.studentinfo;
 
 import static org.junit.Assert.assertEquals;
 
