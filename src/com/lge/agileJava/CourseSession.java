@@ -10,6 +10,9 @@ import java.util.*;
  */
 class CourseSession {
 
+	static final String NEWLINE = System.getProperty("line.separator");
+	static final String ROSTER_REPORT_HEADER = "Student" + NEWLINE + "----" + NEWLINE;
+	static final String ROSTER_REPORT_FOOTER = NEWLINE + "# students = ";
 	private String department;
 	private String number;
 	private Date startDate;
@@ -71,6 +74,24 @@ class CourseSession {
 	Date getStartDate() {
 		// TODO Auto-generated method stub
 		return startDate;
+	}
+
+	String getRosterReport() {
+		StringBuilder buffer = new StringBuilder();
+		
+		buffer.append(ROSTER_REPORT_HEADER);
+		
+		Student student = students.get(0);
+		buffer.append(student.getName());
+		buffer.append(NEWLINE);
+		
+		student = students.get(1);
+		buffer.append(student.getName());
+		buffer.append(NEWLINE);
+		
+		buffer.append(ROSTER_REPORT_FOOTER + students.size() + NEWLINE);
+		
+		return buffer.toString();
 	}
 
 }
