@@ -1,11 +1,6 @@
 package com.lge.agileJava;
 
 import static org.junit.Assert.assertEquals;
-
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-
 import org.junit.Test;
 
 public class RosterReporterTest {
@@ -16,6 +11,7 @@ public class RosterReporterTest {
 		session.enroll(new Student("B"));
 		
 		String rosterReport = new RosterReporter(session).getReport();
+		System.out.println(rosterReport);
 		assertEquals(
 				RosterReporter.ROSTER_REPORT_HEADER + 
 				"A" + RosterReporter.NEWLINE + 
