@@ -16,21 +16,11 @@ public class BoardTest {
 	}
 	@Test
 	public void testCreate() {
-		assertEquals(0, board.getNumberOfPieces());
+		assertEquals(16, board.getNumberOfPieces());
+		assertEquals("PPPPPPPP", board.get2ndRank());
+		assertEquals("pppppppp", board.get7thRank());		
 	}
 	
-	@Test
-	public void testAddPawns() {
-		Pawn pawn1 = createBlackPawn();
-		board.add(pawn1);
-		assertEquals(1, board.getNumberOfPieces());
-		
-		Pawn pawn2 = createWhitePawn();
-		board.add(pawn2);
-		assertEquals(2, board.getNumberOfPieces());
-		assertEquals(pawn1, board.get(0));
-		assertEquals(pawn2, board.get(1));
-	}
 	public Pawn createWhitePawn() {
 		return new Pawn(Pawn.whiteColor);
 	}
@@ -38,5 +28,20 @@ public class BoardTest {
 	public Pawn createBlackPawn() {
 		return new Pawn(Pawn.blackColor);
 	}	
+	
+	@Test
+	public void testBoardPrint() {
+		assertEquals(
+				"........" + Board.NEWLINE +
+				"PPPPPPPP" + Board.NEWLINE +
+				"........" + Board.NEWLINE +
+				"........" + Board.NEWLINE +
+				"........" + Board.NEWLINE +
+				"........" + Board.NEWLINE +
+				"pppppppp" + Board.NEWLINE +
+				"........" + Board.NEWLINE,
+				board.print()
+				);
+	}
 
 }

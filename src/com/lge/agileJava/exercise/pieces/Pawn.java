@@ -7,11 +7,19 @@ package com.lge.agileJava.exercise.pieces;
  *
  */
 public class Pawn {
+	private static final char whiteRepresentation = 'p';
+	private static final char blackRepresentation = 'P';
 	public static final String whiteColor = "white";
 	public static final String blackColor = "black";
 
 	private String color;
+	private char representation;
 
+	public Pawn(String color, char representation) {
+		this.color = color;
+		this.representation = representation;
+	}
+	
 	/**
 	 * Constructor
 	 * @param color
@@ -19,6 +27,10 @@ public class Pawn {
 	public Pawn(String color) {
 		// TODO Auto-generated constructor stub
 		this.color = color;
+		if (color.equals(blackColor))
+			this.representation = blackRepresentation;
+		else
+			this.representation = whiteRepresentation;
 	}
 
 	/**
@@ -27,24 +39,19 @@ public class Pawn {
 	Pawn() {
 		// TODO Auto-generated constructor stub
 		this.color = whiteColor;
+		this.representation = whiteRepresentation;
 	}
 
 	/**
 	 * Get color of pawn
 	 * @return
 	 */
-	String getColor() {
-		// TODO Auto-generated method stub
+	public String getColor() {
 		return color;
 	}
 	
-	@Override
-	public String toString() {
-		return "P";
-	}
-
 	public char toChar() {
-		return 'P';
+		return representation;
 	}
 }
 

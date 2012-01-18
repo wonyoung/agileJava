@@ -11,9 +11,14 @@ import com.lge.agileJava.exercise.pieces.Pawn;
  *
  */
 public class Board {
+	static final String NEWLINE = System.getProperty("line.separator");
 	private ArrayList<Pawn> pawns = new ArrayList<Pawn>();
-	private ArrayList<Pawn> ranks = new ArrayList<Pawn>();
+	private ArrayList<Pawn> secondRanks = new ArrayList<Pawn>();
+	private ArrayList<Pawn> seventhRanks = new ArrayList<Pawn>();
 	
+	Board() {
+		initialize();
+	}
 	/**
 	 * Get a number of pieces pawn
 	 * @return number of pieces
@@ -28,6 +33,10 @@ public class Board {
 	 */
 	public void add(Pawn pawn) {
 		pawns.add(pawn);
+		if (pawn.getColor().equals(Pawn.blackColor))
+			secondRanks.add(pawn);
+		else
+			seventhRanks.add(pawn);
 	}
 
 	/**
@@ -40,7 +49,45 @@ public class Board {
 	}
 	
 	public void initialize() {
-		add(new Pawn("white"));
-		add(new Pawn("black"));
+		for (int i=0; i<8;i++) {
+			add(new Pawn("white"));
+			add(new Pawn("black"));
+		}
+	}
+	public String get2ndRank() {
+		StringBuilder string = new StringBuilder();
+		for (Pawn pawn : secondRanks)
+			string.append(pawn.toChar());
+		
+		return string.toString();
+	}
+	public String get7thRank() {
+		StringBuilder string = new StringBuilder();
+		for (Pawn pawn : seventhRanks)
+			string.append(pawn.toChar());
+
+		return string.toString();
+	}
+	public String print() {
+		StringBuilder buffer = new StringBuilder();
+		
+		buffer.append("........");
+		buffer.append(Board.NEWLINE);
+		
+		buffer.append(get2ndRank());
+		buffer.append(Board.NEWLINE);
+
+		for (int i=2;i<6;i++) {
+			buffer.append("........");
+			buffer.append(Board.NEWLINE);			
+		}
+		
+		buffer.append(get7thRank());
+		buffer.append(Board.NEWLINE);
+		
+		buffer.append("........");
+		buffer.append(Board.NEWLINE);
+		
+		return buffer.toString();
 	}
 }
