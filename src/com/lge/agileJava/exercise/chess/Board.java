@@ -69,24 +69,24 @@ public class Board {
 		return string.toString();
 	}
 	public String print() {
-		StringBuilder buffer = new StringBuilder();
+		String buffer = new String();
+
+		buffer = buffer.concat("........");
+		buffer = buffer.concat(Board.NEWLINE);
 		
-		buffer.append("........");
-		buffer.append(Board.NEWLINE);
-		
-		buffer.append(get2ndRank());
-		buffer.append(Board.NEWLINE);
+		buffer = buffer.concat(get2ndRank());
+		buffer = buffer.concat(Board.NEWLINE);
 
 		for (int i=2;i<6;i++) {
-			buffer.append("........");
-			buffer.append(Board.NEWLINE);			
+			buffer = buffer.concat("........");
+			buffer = buffer.concat(Board.NEWLINE);			
 		}
 		
-		buffer.append(get7thRank());
-		buffer.append(Board.NEWLINE);
+		buffer = buffer.concat(get7thRank());
+		buffer = buffer.concat(Board.NEWLINE);
 		
-		buffer.append("........");
-		buffer.append(Board.NEWLINE);
+		buffer = buffer.concat("........");
+		buffer = buffer.concat(Board.NEWLINE);
 		
 		return buffer.toString();
 	}
