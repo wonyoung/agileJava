@@ -31,6 +31,7 @@ public class BoardTest {
 	
 	@Test
 	public void testBoardPrint() {
+		System.out.println(board.print());
 		assertEquals(
 				"........" + Board.NEWLINE +
 				"PPPPPPPP" + Board.NEWLINE +
