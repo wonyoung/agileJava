@@ -1,15 +1,14 @@
-package com.lge.agileJava.studentinfo;
+package com.lge.agileJava.sis;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses( {
-	StudentTest.class,
-	CourseSessionTest.class,
-	DateUtilTest.class
+	com.lge.agileJava.sis.studentinfo.AllTests.class,
+	com.lge.agileJava.sis.report.AllTests.class
 })
 
 public class AllTests {
-
+	
 }

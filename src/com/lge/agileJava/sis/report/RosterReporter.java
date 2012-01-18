@@ -1,7 +1,7 @@
-package com.lge.agileJava.report;
+package com.lge.agileJava.sis.report;
 
-import com.lge.agileJava.studentinfo.CourseSession;
-import com.lge.agileJava.studentinfo.Student;
+import com.lge.agileJava.sis.studentinfo.CourseSession;
+import com.lge.agileJava.sis.studentinfo.Student;
 
 
 public class RosterReporter {

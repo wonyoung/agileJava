@@ -1,11 +1,11 @@
-package com.lge.agileJava.report;
+package com.lge.agileJava.sis.report;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-import com.lge.agileJava.studentinfo.CourseSession;
-import com.lge.agileJava.studentinfo.DateUtil;
-import com.lge.agileJava.studentinfo.Student;
+import com.lge.agileJava.sis.studentinfo.CourseSession;
+import com.lge.agileJava.sis.studentinfo.DateUtil;
+import com.lge.agileJava.sis.studentinfo.Student;
 
 
 public class RosterReporterTest {

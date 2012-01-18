@@ -1,4 +1,4 @@
-package com.lge.agileJava.studentinfo;
+package com.lge.agileJava.sis.studentinfo;
 
 import java.util.*;
 
