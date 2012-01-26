@@ -9,6 +9,7 @@ import java.util.*;
  * 
  */
 public class CourseSession {
+	private static int count;
 	private String department;
 	private String number;
 	private Date startDate;
@@ -26,6 +27,11 @@ public class CourseSession {
 		this.department = department;
 		this.number = number;
 		this.startDate = startDate;
+		CourseSession.incrementCount();
+	}
+
+	private static void incrementCount() {
+		count = count + 1;
 	}
 
 	String getDepartment() {
@@ -75,5 +81,14 @@ public class CourseSession {
 	public ArrayList<Student> getAllStudents() {
 		return students;
 	}
+
+	public static int getCount() {
+		return count;
+	}
+
+	public static void resetCount() {
+		CourseSession.count = 0;
+	}
+	
 }
 
