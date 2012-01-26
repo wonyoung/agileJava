@@ -34,7 +34,7 @@ public class Student {
 	}
 
 	public boolean isInState() {
-		return state .equals(Student.IN_STATE);
+		return state.equals(Student.IN_STATE);
 	}
 
 }
