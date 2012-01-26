@@ -18,4 +18,13 @@ public class StudentTest {
 
 		assertEquals(studentName, student.getName());		
 	}
+	
+	@Test
+	public void testBadStatic() {
+		Student studentA = new Student("a");
+		assertEquals("a", studentA.getName());
+		Student studentB = new Student("b");
+		assertEquals("b", studentB.getName());
+		assertEquals("a", studentA.getName());
+	}
 }
