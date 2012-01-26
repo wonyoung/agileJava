@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.lge.agileJava.exercise.pieces.Pawn;
+import static com.lge.agileJava.exercise.chess.StringUtil.NEWLINE;
 
 public class BoardTest {
 	private Board board;
@@ -33,14 +34,14 @@ public class BoardTest {
 	public void testBoardPrint() {
 		System.out.println(board.print());
 		assertEquals(
-				"........" + Board.NEWLINE +
-				"PPPPPPPP" + Board.NEWLINE +
-				"........" + Board.NEWLINE +
-				"........" + Board.NEWLINE +
-				"........" + Board.NEWLINE +
-				"........" + Board.NEWLINE +
-				"pppppppp" + Board.NEWLINE +
-				"........" + Board.NEWLINE,
+				"........" + NEWLINE +
+				"PPPPPPPP" + NEWLINE +
+				"........" + NEWLINE +
+				"........" + NEWLINE +
+				"........" + NEWLINE +
+				"........" + NEWLINE +
+				"pppppppp" + NEWLINE +
+				"........" + NEWLINE,
 				board.print()
 				);
 	}

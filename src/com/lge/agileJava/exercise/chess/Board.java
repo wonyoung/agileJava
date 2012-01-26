@@ -1,6 +1,7 @@
 package com.lge.agileJava.exercise.chess;
 
 import java.util.ArrayList;
+import static com.lge.agileJava.exercise.chess.StringUtil.NEWLINE;
 
 import com.lge.agileJava.exercise.pieces.Pawn;
 
@@ -11,7 +12,6 @@ import com.lge.agileJava.exercise.pieces.Pawn;
  *
  */
 public class Board {
-	static final String NEWLINE = System.getProperty("line.separator");
 	private ArrayList<Pawn> pawns = new ArrayList<Pawn>();
 	private ArrayList<Pawn> secondRanks = new ArrayList<Pawn>();
 	private ArrayList<Pawn> seventhRanks = new ArrayList<Pawn>();
@@ -72,21 +72,21 @@ public class Board {
 		String buffer = new String();
 
 		buffer = buffer.concat("........");
-		buffer = buffer.concat(Board.NEWLINE);
+		buffer = buffer.concat(NEWLINE);
 		
 		buffer = buffer.concat(get2ndRank());
-		buffer = buffer.concat(Board.NEWLINE);
+		buffer = buffer.concat(NEWLINE);
 
 		for (int i=2;i<6;i++) {
 			buffer = buffer.concat("........");
-			buffer = buffer.concat(Board.NEWLINE);			
+			buffer = buffer.concat(NEWLINE);			
 		}
 		
 		buffer = buffer.concat(get7thRank());
-		buffer = buffer.concat(Board.NEWLINE);
+		buffer = buffer.concat(NEWLINE);
 		
 		buffer = buffer.concat("........");
-		buffer = buffer.concat(Board.NEWLINE);
+		buffer = buffer.concat(NEWLINE);
 		
 		return buffer.toString();
 	}
