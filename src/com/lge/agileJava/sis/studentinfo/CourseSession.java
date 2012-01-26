@@ -22,18 +22,33 @@ public class CourseSession {
 	 * @param number
 	 * @param startDate the date on which the CourseSession begins
 	 */
-	public CourseSession(String department, String number, Date startDate) {
+	private CourseSession(String department, String number, Date startDate) {
 		// TODO Auto-generated constructor stub
 		this.department = department;
 		this.number = number;
 		this.startDate = startDate;
-		CourseSession.incrementCount();
+	}
+	
+	public static CourseSession create(
+			String department,
+			String number,
+			Date startDate) {
+		incrementCount();
+		return new CourseSession(department, number, startDate);
 	}
 
 	private static void incrementCount() {
 		++count;
 	}
 
+	public static int getCount() {
+		return count;
+	}
+	
+	public static void resetCount() {
+		CourseSession.count = 0;
+	}
+	
 	String getDepartment() {
 		// TODO Auto-generated method stub
 		return department;
@@ -82,13 +97,5 @@ public class CourseSession {
 		return students;
 	}
 
-	public static int getCount() {
-		return count;
-	}
-
-	public static void resetCount() {
-		CourseSession.count = 0;
-	}
-	
 }
 
