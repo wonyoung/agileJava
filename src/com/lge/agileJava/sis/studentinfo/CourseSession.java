@@ -14,6 +14,7 @@ public class CourseSession {
 	private String number;
 	private Date startDate;
 	private ArrayList<Student> students = new ArrayList<Student>();
+	private int numberOfCredits;
 
 	/**
 	 * Constructs a CourseSession starting on a specific date
@@ -65,7 +66,7 @@ public class CourseSession {
 	}
 
 	public void enroll(Student student) {
-		// TODO Auto-generated method stub
+		student.addCredits(numberOfCredits);
 		students.add(student);
 	}
 	
@@ -95,6 +96,10 @@ public class CourseSession {
 
 	public ArrayList<Student> getAllStudents() {
 		return students;
+	}
+
+	public void setNumberOfCredits(int numberOfCredits) {
+		this.numberOfCredits = numberOfCredits;
 	}
 
 }

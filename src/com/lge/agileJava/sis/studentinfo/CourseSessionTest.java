@@ -10,6 +10,7 @@ import org.junit.Test;
 public class CourseSessionTest {
 	private CourseSession session;
 	private Date startDate;
+	private static final int CREDITS = 3;
 	
 	@Before
 	public void setUp() {
@@ -18,7 +19,10 @@ public class CourseSessionTest {
 	}
 
 	private CourseSession createCourseSession() {
-		return CourseSession.create("ENGL", "101", startDate);
+		CourseSession session = 
+				CourseSession.create("ENGL", "101", startDate);
+		session.setNumberOfCredits(CourseSessionTest.CREDITS);
+		return session;
 	}
 	
 	@Test
@@ -33,11 +37,13 @@ public class CourseSessionTest {
 	public void testEnrollStudents() {
 		Student student1 = new Student("Cain DiVoe");
 		session.enroll(student1);
+		assertEquals(CREDITS, student1.getCredits());
 		assertEquals(1, session.getNumberOfStudents());
 		assertEquals(student1, session.get(0));
 		
 		Student student2 = new Student("Coralee Devaughn");
 		session.enroll(student2);
+		assertEquals(CREDITS, student2.getCredits());
 		assertEquals(2, session.getNumberOfStudents());
 		assertEquals(student1, session.get(0));
 		assertEquals(student2, session.get(1));
