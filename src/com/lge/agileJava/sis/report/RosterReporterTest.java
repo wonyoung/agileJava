@@ -1,12 +1,13 @@
 package com.lge.agileJava.sis.report;
 
+import static com.lge.agileJava.sis.report.ReportConstant.NEWLINE;
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 import com.lge.agileJava.sis.studentinfo.CourseSession;
 import com.lge.agileJava.sis.studentinfo.DateUtil;
 import com.lge.agileJava.sis.studentinfo.Student;
-
 
 public class RosterReporterTest {
 	@Test
@@ -19,10 +20,10 @@ public class RosterReporterTest {
 		System.out.println(rosterReport);
 		assertEquals(
 				RosterReporter.ROSTER_REPORT_HEADER + 
-				"A" + RosterReporter.NEWLINE + 
-				"B" + RosterReporter.NEWLINE +
+				"A" + NEWLINE + 
+				"B" + NEWLINE +
 				RosterReporter.ROSTER_REPORT_FOOTER + "2" +
-				RosterReporter.NEWLINE, rosterReport);
+				NEWLINE, rosterReport);
 		
 	}		
 }
