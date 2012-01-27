@@ -110,7 +110,7 @@ public class Board {
 		return string.toString();
 	}
 	public String print() {
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder buffer = new StringBuilder();
 
 		buffer.append(StringUtil.appendNewLine(get1stRank()));
 		buffer.append(StringUtil.appendNewLine(get2ndRank()));

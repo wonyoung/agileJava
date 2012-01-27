@@ -50,12 +50,12 @@ public class CourseSession {
 		CourseSession.count = 0;
 	}
 	
-	String getDepartment() {
+	public String getDepartment() {
 		// TODO Auto-generated method stub
 		return department;
 	}
 
-	String getNumber() {
+	public String getNumber() {
 		// TODO Auto-generated method stub
 		return number;
 	}
