@@ -73,15 +73,15 @@ public class StudentTest {
 	public void testCalculateGpa() {
 		Student student = new Student("a");
 		assertGpa(student, 0.0);
-		student.addGrade("A");
+		student.addGrade(Student.Grade.A);
 		assertGpa(student, 4.0);
-		student.addGrade("B");
+		student.addGrade(Student.Grade.B);
 		assertGpa(student, 3.5);
-		student.addGrade("C");
+		student.addGrade(Student.Grade.C);
 		assertGpa(student, 3.0);
-		student.addGrade("D");
+		student.addGrade(Student.Grade.D);
 		assertGpa(student, 2.5);
-		student.addGrade("F");
+		student.addGrade(Student.Grade.F);
 		assertGpa(student, 2.0);
 	}
 
