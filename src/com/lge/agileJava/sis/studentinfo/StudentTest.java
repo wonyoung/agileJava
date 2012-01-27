@@ -8,6 +8,8 @@ import org.junit.Test;
 
 public class StudentTest {
 
+	private static final double GRADE_TOLERANCE = 0.05;
+
 	@Test
 	public void testCreate() {
 		final String studentName = "Jane Doe";
@@ -65,5 +67,21 @@ public class StudentTest {
 		assertFalse(student.isInState());
 		student.setState("co");
 		assertTrue(student.isInState());
+	}
+	
+	@Test
+	public void testCalculateGpa() {
+		Student student = new Student("a");
+		assertEquals(0.0, student.getGpa(), GRADE_TOLERANCE);
+		student.addGrade("A");
+		assertEquals(4.0, student.getGpa(), GRADE_TOLERANCE);
+		student.addGrade("B");
+		assertEquals(3.5, student.getGpa(), GRADE_TOLERANCE);
+		student.addGrade("C");
+		assertEquals(3.0, student.getGpa(), GRADE_TOLERANCE);
+		student.addGrade("D");
+		assertEquals(2.5, student.getGpa(), GRADE_TOLERANCE);
+		student.addGrade("F");
+		assertEquals(2.0, student.getGpa(), GRADE_TOLERANCE);
 	}
 }
