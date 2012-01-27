@@ -44,18 +44,21 @@ public class Student {
 		if (grades.isEmpty())
 			return 0.0;
 		double total = 0.0;
-		for (String grade: grades) {
-			if (grade.equals("A"))
-				total += 4;
-			else if (grade.equals("B"))
-				total += 3;
-			else if (grade.equals("C"))
-				total += 2;
-			else if (grade.equals("D"))
-				total += 1;
-		}
-
+		for (String grade: grades)
+			total += gradePointsFor(grade);
 		return total / grades.size();
+	}
+
+	int gradePointsFor(String grade) {
+		if (grade.equals("A"))
+			return 4;
+		if (grade.equals("B"))
+			return 3;
+		if (grade.equals("C"))
+			return 2;
+		if (grade.equals("D"))
+			return 1;
+		return 0;
 	}
 
 	public void addGrade(String grade) {
