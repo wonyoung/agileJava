@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.lge.agileJava.exercise.pieces.Piece;
-import static com.lge.agileJava.exercise.chess.StringUtil.NEWLINE;
 
 public class BoardTest {
 	private Board board;
@@ -14,13 +13,6 @@ public class BoardTest {
 	@Before
 	public void setUp() {
 		board = new Board();
-	}
-	@Test
-	public void testCreate() {
-		board.initialize();
-		assertEquals(16, board.getNumberOfPieces());
-		assertEquals("PPPPPPPP", board.get2ndRank());
-		assertEquals("pppppppp", board.get7thRank());		
 	}
 	
 	public Piece createWhitePawn() {
@@ -32,20 +24,17 @@ public class BoardTest {
 	}	
 	
 	@Test
-	public void testBoardPrint() {
+	public void testCreate() {
 		board.initialize();
-		System.out.println(board.print());
+		assertEquals(32, board.pieceCount());
+		String blankRank = StringUtil.appendNewLine("........");
 		assertEquals(
-				"........" + NEWLINE +
-				"PPPPPPPP" + NEWLINE +
-				"........" + NEWLINE +
-				"........" + NEWLINE +
-				"........" + NEWLINE +
-				"........" + NEWLINE +
-				"pppppppp" + NEWLINE +
-				"........" + NEWLINE,
-				board.print()
-				);
+				StringUtil.appendNewLine("RNBQKBNR") +
+				StringUtil.appendNewLine("PPPPPPPP") +
+				blankRank + blankRank + blankRank + blankRank +
+				StringUtil.appendNewLine("pppppppp") +
+				StringUtil.appendNewLine("rnbqkbnr") ,
+				board.print());
 	}
 
 }
