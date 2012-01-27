@@ -3,7 +3,7 @@ package com.lge.agileJava.exercise.chess;
 import java.util.ArrayList;
 import static com.lge.agileJava.exercise.chess.StringUtil.NEWLINE;
 
-import com.lge.agileJava.exercise.pieces.Pawn;
+import com.lge.agileJava.exercise.pieces.Piece;
 
 /**
  * Board class for chess game world.
@@ -12,13 +12,11 @@ import com.lge.agileJava.exercise.pieces.Pawn;
  *
  */
 public class Board {
-	private ArrayList<Pawn> pawns = new ArrayList<Pawn>();
-	private ArrayList<Pawn> secondRanks = new ArrayList<Pawn>();
-	private ArrayList<Pawn> seventhRanks = new ArrayList<Pawn>();
+	private ArrayList<Piece> pawns = new ArrayList<Piece>();
+	private ArrayList<Piece> secondRanks = new ArrayList<Piece>();
+	private ArrayList<Piece> seventhRanks = new ArrayList<Piece>();
 	
-	Board() {
-		initialize();
-	}
+	Board() { }
 	/**
 	 * Get a number of pieces pawn
 	 * @return number of pieces
@@ -31,9 +29,9 @@ public class Board {
 	 * Add Pawn object to Board
 	 * @param pawn
 	 */
-	public void add(Pawn pawn) {
+	public void add(Piece pawn) {
 		pawns.add(pawn);
-		if (pawn.getColor().equals(Pawn.blackColor))
+		if (pawn.getColor().equals(Piece.blackColor))
 			secondRanks.add(pawn);
 		else
 			seventhRanks.add(pawn);
@@ -44,26 +42,26 @@ public class Board {
 	 * @param index
 	 * @return
 	 */
-	public Pawn get(int index) {
+	public Piece get(int index) {
 		return pawns.get(index);
 	}
 	
 	public void initialize() {
 		for (int i=0; i<8;i++) {
-			add(new Pawn("white"));
-			add(new Pawn("black"));
+			add(Piece.create("white", "pawn"));
+			add(Piece.create("black", "pawn"));
 		}
 	}
 	public String get2ndRank() {
 		StringBuilder string = new StringBuilder();
-		for (Pawn pawn : secondRanks)
+		for (Piece pawn : secondRanks)
 			string.append(pawn.toChar());
 		
 		return string.toString();
 	}
 	public String get7thRank() {
 		StringBuilder string = new StringBuilder();
-		for (Pawn pawn : seventhRanks)
+		for (Piece pawn : seventhRanks)
 			string.append(pawn.toChar());
 
 		return string.toString();

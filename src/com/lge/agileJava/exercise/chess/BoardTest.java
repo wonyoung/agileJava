@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.lge.agileJava.exercise.pieces.Pawn;
+import com.lge.agileJava.exercise.pieces.Piece;
 import static com.lge.agileJava.exercise.chess.StringUtil.NEWLINE;
 
 public class BoardTest {
@@ -17,21 +17,23 @@ public class BoardTest {
 	}
 	@Test
 	public void testCreate() {
+		board.initialize();
 		assertEquals(16, board.getNumberOfPieces());
 		assertEquals("PPPPPPPP", board.get2ndRank());
 		assertEquals("pppppppp", board.get7thRank());		
 	}
 	
-	public Pawn createWhitePawn() {
-		return new Pawn(Pawn.whiteColor);
+	public Piece createWhitePawn() {
+		return Piece.create(Piece.whiteColor, "pawn");
 	}
 	
-	public Pawn createBlackPawn() {
-		return new Pawn(Pawn.blackColor);
+	public Piece createBlackPawn() {
+		return Piece.create(Piece.blackColor, "pawn");
 	}	
 	
 	@Test
 	public void testBoardPrint() {
+		board.initialize();
 		System.out.println(board.print());
 		assertEquals(
 				"........" + NEWLINE +

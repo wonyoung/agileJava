@@ -5,12 +5,12 @@ import org.junit.runners.Suite;
 
 import com.lge.agileJava.exercise.chess.BoardTest;
 import com.lge.agileJava.exercise.chess.CharacterTest;
-import com.lge.agileJava.exercise.pieces.PawnTest;
+import com.lge.agileJava.exercise.pieces.PieceTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses( {
 	BoardTest.class,
-	PawnTest.class,
+	PieceTest.class,
 	CharacterTest.class
 })
 
