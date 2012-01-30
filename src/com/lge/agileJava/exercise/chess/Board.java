@@ -1,6 +1,7 @@
 package com.lge.agileJava.exercise.chess;
 
 import java.util.ArrayList;
+
 import com.lge.agileJava.exercise.pieces.Piece;
 import com.lge.agileJava.exercise.pieces.Piece.Color;
 import com.lge.agileJava.exercise.pieces.Piece.Type;
@@ -12,6 +13,12 @@ import com.lge.agileJava.exercise.pieces.Piece.Type;
  *
  */
 public class Board {
+	private static final double ROOK_STRENGTH = 5.0;
+	private static final double BISHOP_STRENGTH = 3.0;
+	private static final double QUEEN_STRENGTH = 9.0;
+	private static final double KNIGHT_STRENGTH = 2.5;
+	private static final double PAWN_STRENGTH = 1.0;
+	private static final double PAWN_SAME_FILE_STRENGTH = 0.5;
 	private ArrayList<Piece> pieces = new ArrayList<Piece>();
 	
 	Board() { }
@@ -126,5 +133,43 @@ public class Board {
 		for (int i=0; i<8*8;i++) {
 			add(Piece.noPiece());
 		}		
+	}
+	public double getStrength(Color color) {
+		double strength = 0.0;
+		for (Piece piece : pieces)
+			if (piece.getColor() == color)
+				if (piece.getType() == Type.ROOK)
+					strength += ROOK_STRENGTH;
+				else if (piece.getType() == Type.BISHOP)
+					strength += BISHOP_STRENGTH;
+				else if (piece.getType() == Type.QUEEN)
+					strength += QUEEN_STRENGTH;
+				else if (piece.getType() == Type.KNIGHT)
+					strength += KNIGHT_STRENGTH;
+				else if (piece.getType() == Type.PAWN) {
+					if (getNumberofSameFile(pieces.indexOf(piece), piece.getColor(), Type.PAWN) > 1)
+						strength += PAWN_SAME_FILE_STRENGTH;
+					else
+						strength += PAWN_STRENGTH;
+				}
+						
+						
+
+//		strength = getNumberofPieces(color, Type.ROOK) * ROOK_STRENGTH;
+//		strength += getNumberofPieces(color, Type.BISHOP) * BISHOP_STRENGTH;
+//		strength += getNumberofPieces(color, Type.QUEEN) * QUEEN_STRENGTH;
+//		strength += getNumberofPieces(color, Type.KNIGHT) * KNIGHT_STRENGTH;
+//		strength += getNumberofPieces(color, Type.PAWN) * PAWN_STRENGTH;
+		
+		return strength;
+	}
+	private int getNumberofSameFile(int index, Color color, Type type) {
+		int count=0;
+		for (Piece piece : pieces)
+			if (piece.getType() == type)
+				if (piece.getColor() == color)
+					if ((pieces.indexOf(piece) - index) % 8 == 0)
+						count++;
+		return count;
 	}
 }

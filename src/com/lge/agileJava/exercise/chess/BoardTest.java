@@ -7,8 +7,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.lge.agileJava.exercise.pieces.Piece;
+import com.lge.agileJava.exercise.pieces.Piece.Color;
 
 public class BoardTest {
+	private static final double STRENGTH_TOLERANCE = 0.05;
 	private Board board;
 	
 	@Before
@@ -61,5 +63,32 @@ public class BoardTest {
 				StringUtil.appendNewLine("..k.....") +
 				blankRank + blankRank + blankRank,
 				board.print());		
+	}
+	
+	@Test
+	public void testGetScore() {
+		board.setEmpty();
+		board.set(Piece.createBlackKing(), "b8");
+		veryfyStrength(Piece.createBlackRook(), "c8", 5.0, Piece.Color.BLACK);
+		veryfyStrength(Piece.createBlackBishop(), "d7", 8.0, Piece.Color.BLACK);
+		veryfyStrength(Piece.createBlackQueen(), "e6", 17.0, Piece.Color.BLACK);
+		veryfyStrength(Piece.createBlackPawn(), "a7", 18.0, Piece.Color.BLACK);
+		veryfyStrength(Piece.createBlackPawn(), "b6", 19.0, Piece.Color.BLACK);
+		veryfyStrength(Piece.createBlackPawn(), "c7", 20.0, Piece.Color.BLACK);
+		
+		board.set(Piece.createWhiteKing(), "f1");
+		veryfyStrength(Piece.createWhiteRook(), "e1", 5.0, Piece.Color.WHITE);
+		veryfyStrength(Piece.createWhiteQueen(), "g4", 14.0, Piece.Color.WHITE);
+		veryfyStrength(Piece.createWhiteKnight(), "f4", 16.5, Piece.Color.WHITE);
+		veryfyStrength(Piece.createWhitePawn(), "f3", 17.5, Piece.Color.WHITE);
+		veryfyStrength(Piece.createWhitePawn(), "g2", 18.5, Piece.Color.WHITE);
+		veryfyStrength(Piece.createWhitePawn(), "h3", 19.5, Piece.Color.WHITE);
+		veryfyStrength(Piece.createWhitePawn(), "f2", 19.5, Piece.Color.WHITE);
+	}
+
+	private void veryfyStrength(Piece piece, String location,
+			double strength, Color color) {
+		board.set(piece, location);
+		assertEquals(strength, board.getStrength(color), STRENGTH_TOLERANCE);
 	}
 }
