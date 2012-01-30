@@ -7,11 +7,10 @@ package com.lge.agileJava.exercise.pieces;
  *
  */
 public class Piece {
-	public static final String whiteColor = "white";
-	public static final String blackColor = "black";
+	public enum Color { WHITE, BLACK };
 	private static int count;
 
-	private String color;
+	private Color color;
 	private String name;
 	private char representation;
 	
@@ -23,12 +22,12 @@ public class Piece {
 		Piece.count = 0;
 	}
 	
-	public static Piece create(String color, String name) {
+	public static Piece create(Piece.Color white, String name) {
 		count++;
-		return new Piece(color, name);
+		return new Piece(white, name);
 	}
 	
-	private Piece(String color, String name) {
+	private Piece(Piece.Color color, String name) {
 		this.color = color;
 		this.name = name;
 		switch(name) {
@@ -46,7 +45,7 @@ public class Piece {
 			this.representation = '.';
 			break;
 		}
-		if (color.equals(blackColor))
+		if (color == Piece.Color.BLACK)
 			this.representation = Character.toUpperCase(this.representation);
 		else
 			this.representation = Character.toLowerCase(this.representation);
@@ -56,7 +55,7 @@ public class Piece {
 	 * Get color of pawn
 	 * @return
 	 */
-	public String getColor() {
+	public Color getColor() {
 		return color;
 	}
 	
@@ -65,11 +64,11 @@ public class Piece {
 	}
 
 	public boolean isWhite() {
-		return this.color.equals(whiteColor);
+		return this.color == Piece.Color.WHITE;
 	}
 
 	public boolean isBlack() {
-		return this.color.equals(blackColor);
+		return this.color == Piece.Color.BLACK;
 	}
 }
 

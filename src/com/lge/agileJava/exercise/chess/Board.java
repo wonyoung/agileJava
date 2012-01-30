@@ -31,7 +31,7 @@ public class Board {
 	 */
 	public void add(Piece pawn) {
 		pawns.add(pawn);
-		if (pawn.getColor().equals(Piece.blackColor)) {
+		if (pawn.getColor() == Piece.Color.BLACK) {
 			if (firstRanks.size() < 8) {
 				firstRanks.add(pawn);
 			}
@@ -60,26 +60,26 @@ public class Board {
 	
 	public void initialize() {
 		Piece.resetCount();
-		add(Piece.create("black", "rook"));
-		add(Piece.create("black", "knight"));
-		add(Piece.create("black", "bishop"));
-		add(Piece.create("black", "queen"));
-		add(Piece.create("black", "king"));
-		add(Piece.create("black", "bishop"));
-		add(Piece.create("black", "knight"));
-		add(Piece.create("black", "rook"));
+		add(Piece.create(Piece.Color.BLACK, "rook"));
+		add(Piece.create(Piece.Color.BLACK, "knight"));
+		add(Piece.create(Piece.Color.BLACK, "bishop"));
+		add(Piece.create(Piece.Color.BLACK, "queen"));
+		add(Piece.create(Piece.Color.BLACK, "king"));
+		add(Piece.create(Piece.Color.BLACK, "bishop"));
+		add(Piece.create(Piece.Color.BLACK, "knight"));
+		add(Piece.create(Piece.Color.BLACK, "rook"));
 		for (int i=0; i<8;i++) {
-			add(Piece.create("black", "pawn"));
-			add(Piece.create("white", "pawn"));
+			add(Piece.create(Piece.Color.BLACK, "pawn"));
+			add(Piece.create(Piece.Color.WHITE, "pawn"));
 		}
-		add(Piece.create("white", "rook"));
-		add(Piece.create("white", "knight"));
-		add(Piece.create("white", "bishop"));
-		add(Piece.create("white", "queen"));
-		add(Piece.create("white", "king"));
-		add(Piece.create("white", "bishop"));
-		add(Piece.create("white", "knight"));
-		add(Piece.create("white", "rook"));
+		add(Piece.create(Piece.Color.WHITE, "rook"));
+		add(Piece.create(Piece.Color.WHITE, "knight"));
+		add(Piece.create(Piece.Color.WHITE, "bishop"));
+		add(Piece.create(Piece.Color.WHITE, "queen"));
+		add(Piece.create(Piece.Color.WHITE, "king"));
+		add(Piece.create(Piece.Color.WHITE, "bishop"));
+		add(Piece.create(Piece.Color.WHITE, "knight"));
+		add(Piece.create(Piece.Color.WHITE, "rook"));
 	}
 	public String get2ndRank() {
 		StringBuilder string = new StringBuilder();

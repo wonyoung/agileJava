@@ -9,25 +9,25 @@ import org.junit.Test;
 public class PieceTest {
 	@Test
 	public void testCreate() {
-		Piece pawn = Piece.create(Piece.whiteColor, "pawn");
-		assertEquals(Piece.whiteColor, pawn.getColor());
+		Piece pawn = Piece.create(Piece.Color.WHITE, "pawn");
+		assertEquals(Piece.Color.WHITE, pawn.getColor());
 
-		Piece secondPawn = Piece.create(Piece.blackColor, "pawn");
-		assertEquals(Piece.blackColor, secondPawn.getColor());
+		Piece secondPawn = Piece.create(Piece.Color.BLACK, "pawn");
+		assertEquals(Piece.Color.BLACK, secondPawn.getColor());
 		
 	}
 	
 	@Test
 	public void testPrintableRepresentation() {
-		assertEquals('P', Piece.create(Piece.blackColor, "pawn").toChar());
+		assertEquals('P', Piece.create(Piece.Color.BLACK, "pawn").toChar());
 	}
 	
 	@Test
 	public void testColor() {
-		Piece piece = Piece.create(Piece.whiteColor, "pawn");
+		Piece piece = Piece.create(Piece.Color.WHITE, "pawn");
 		assertTrue(piece.isWhite());
 		assertFalse(piece.isBlack());
-		Piece piece2 = Piece.create(Piece.blackColor, "pawn");
+		Piece piece2 = Piece.create(Piece.Color.BLACK, "pawn");
 		assertFalse(piece2.isWhite());
 		assertTrue(piece2.isBlack());
 	}
