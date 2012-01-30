@@ -60,52 +60,52 @@ public class Board {
 	
 	public void initialize() {
 		Piece.resetCount();
-		add(Piece.create(Piece.Color.BLACK, "rook"));
-		add(Piece.create(Piece.Color.BLACK, "knight"));
-		add(Piece.create(Piece.Color.BLACK, "bishop"));
-		add(Piece.create(Piece.Color.BLACK, "queen"));
-		add(Piece.create(Piece.Color.BLACK, "king"));
-		add(Piece.create(Piece.Color.BLACK, "bishop"));
-		add(Piece.create(Piece.Color.BLACK, "knight"));
-		add(Piece.create(Piece.Color.BLACK, "rook"));
+		add(Piece.create(Piece.Color.BLACK, Piece.Type.ROOK));
+		add(Piece.create(Piece.Color.BLACK, Piece.Type.KNIGHT));
+		add(Piece.create(Piece.Color.BLACK, Piece.Type.BISHOP));
+		add(Piece.create(Piece.Color.BLACK, Piece.Type.QUEEN));
+		add(Piece.create(Piece.Color.BLACK, Piece.Type.KING));
+		add(Piece.create(Piece.Color.BLACK, Piece.Type.BISHOP));
+		add(Piece.create(Piece.Color.BLACK, Piece.Type.KNIGHT));
+		add(Piece.create(Piece.Color.BLACK, Piece.Type.ROOK));
 		for (int i=0; i<8;i++) {
-			add(Piece.create(Piece.Color.BLACK, "pawn"));
-			add(Piece.create(Piece.Color.WHITE, "pawn"));
+			add(Piece.create(Piece.Color.BLACK, Piece.Type.PAWN));
+			add(Piece.create(Piece.Color.WHITE, Piece.Type.PAWN));
 		}
-		add(Piece.create(Piece.Color.WHITE, "rook"));
-		add(Piece.create(Piece.Color.WHITE, "knight"));
-		add(Piece.create(Piece.Color.WHITE, "bishop"));
-		add(Piece.create(Piece.Color.WHITE, "queen"));
-		add(Piece.create(Piece.Color.WHITE, "king"));
-		add(Piece.create(Piece.Color.WHITE, "bishop"));
-		add(Piece.create(Piece.Color.WHITE, "knight"));
-		add(Piece.create(Piece.Color.WHITE, "rook"));
+		add(Piece.create(Piece.Color.WHITE, Piece.Type.ROOK));
+		add(Piece.create(Piece.Color.WHITE, Piece.Type.KNIGHT));
+		add(Piece.create(Piece.Color.WHITE, Piece.Type.BISHOP));
+		add(Piece.create(Piece.Color.WHITE, Piece.Type.QUEEN));
+		add(Piece.create(Piece.Color.WHITE, Piece.Type.KING));
+		add(Piece.create(Piece.Color.WHITE, Piece.Type.BISHOP));
+		add(Piece.create(Piece.Color.WHITE, Piece.Type.KNIGHT));
+		add(Piece.create(Piece.Color.WHITE, Piece.Type.ROOK));
 	}
 	public String get2ndRank() {
 		StringBuilder string = new StringBuilder();
 		for (Piece pawn : secondRanks)
-			string.append(pawn.toChar());
+			string.append(pawn.getRepresentation());
 		
 		return string.toString();
 	}
 	public String get1stRank() {
 		StringBuilder string = new StringBuilder();
 		for (Piece pawn : firstRanks)
-			string.append(pawn.toChar());
+			string.append(pawn.getRepresentation());
 
 		return string.toString();
 	}
 	public String get7thRank() {
 		StringBuilder string = new StringBuilder();
 		for (Piece pawn : seventhRanks)
-			string.append(pawn.toChar());
+			string.append(pawn.getRepresentation());
 
 		return string.toString();
 	}
 	public String get8thRank() {
 		StringBuilder string = new StringBuilder();
 		for (Piece pawn : eighthRanks)
-			string.append(pawn.toChar());
+			string.append(pawn.getRepresentation());
 
 		return string.toString();
 	}

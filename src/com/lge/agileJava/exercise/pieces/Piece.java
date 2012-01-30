@@ -8,11 +8,17 @@ package com.lge.agileJava.exercise.pieces;
  */
 public class Piece {
 	public enum Color { WHITE, BLACK };
-	enum Type { PAWN, ROOK, KNIGHT, BISHOP, QUEEN, KING };  
+	public enum Type { NO_PIECE, PAWN, ROOK, KNIGHT, BISHOP, QUEEN, KING }
+	static final char PAWN_REPRESENTATION = 'p';
+	public static final char ROOK_REPRESENTATION = 'r';
+	public static final char KNIGHT_REPRESENTATION = 'n';
+	public static final char BISHOP_REPRESENTATION = 'b';
+	public static final char QUEEN_REPRESENTATION = 'q';
+	public static final char KING_REPRESENTATION = 'k';  
 	private static int count;
 
 	private Color color;
-	private String name;
+	private Type type;
 	private char representation;
 	
 	public static int getCount() {
@@ -23,44 +29,43 @@ public class Piece {
 		Piece.count = 0;
 	}
 	
-	public static Piece create(Piece.Color white, String name) {
+	public static Piece create(Piece.Color white, Piece.Type type) {
 		count++;
-		return new Piece(white, name);
+		return new Piece(white, type);
 	}
 	
-	private Piece(Piece.Color color, String name) {
+
+	private Piece(Piece.Color color, Piece.Type type) {
 		this.color = color;
-		this.name = name;
-		switch(name) {
-		case "pawn":
-		case "rook":
-		case "bishop":
-		case "queen":
-		case "king":
-			this.representation = this.name.charAt(0);
-			break;
-		case "knight":
-			this.representation = 'n';
-			break;
-		default:
+		this.type = type;
+		if (type == Piece.Type.PAWN)
+			this.representation = PAWN_REPRESENTATION;
+		else if (type == Piece.Type.ROOK)
+			this.representation = ROOK_REPRESENTATION;
+		else if (type == Piece.Type.KNIGHT)
+			this.representation = KNIGHT_REPRESENTATION;
+		else if (type == Piece.Type.BISHOP)
+			this.representation = BISHOP_REPRESENTATION;
+		else if (type == Piece.Type.QUEEN)
+			this.representation = QUEEN_REPRESENTATION;
+		else if (type == Piece.Type.KING)
+			this.representation = KING_REPRESENTATION;
+		else if (type == Piece.Type.NO_PIECE)
 			this.representation = '.';
-			break;
-		}
+
 		if (color == Piece.Color.BLACK)
 			this.representation = Character.toUpperCase(this.representation);
-		else
-			this.representation = Character.toLowerCase(this.representation);
 	}
 
-	/**
-	 * Get color of pawn
-	 * @return
-	 */
 	public Color getColor() {
 		return color;
 	}
-	
-	public char toChar() {
+
+	public Type getType() {
+		return type;
+	}
+
+	public char getRepresentation() {
 		return representation;
 	}
 
@@ -70,6 +75,66 @@ public class Piece {
 
 	public boolean isBlack() {
 		return this.color == Piece.Color.BLACK;
+	}
+
+	private static Piece createWhite(Type type) {
+		return create(Color.WHITE, type);
+	}
+
+	private static Piece createBlack(Type type) {
+		return create(Color.BLACK, type);
+	}
+
+	public static Piece createWhitePawn() {
+		return createWhite(Type.PAWN);
+	}
+	
+	public static Piece createWhiteRook() {
+		return createWhite(Type.ROOK);
+	}
+
+	public static Piece createWhiteKnight() {
+		return createWhite(Type.KNIGHT);
+	}
+
+	public static Piece createWhiteBishop() {
+		return createWhite(Type.BISHOP);
+	}
+
+	public static Piece createWhiteQueen() {
+		return createWhite(Type.QUEEN);
+	}
+
+	public static Piece createWhiteKing() {
+		return createWhite(Type.KING);
+	}
+
+	public static Piece createBlackPawn() {
+		return createBlack(Type.PAWN);
+	}
+
+	public static Piece createBlackRook() {
+		return createBlack(Type.ROOK);
+	}
+
+	public static Piece createBlackKnight() {
+		return createBlack(Type.KNIGHT);
+	}
+
+	public static Piece createBlackBishop() {
+		return createBlack(Type.BISHOP);
+	}
+
+	public static Piece createBlackQueen() {
+		return createBlack(Type.QUEEN);
+	}
+
+	public static Piece createBlackKing() {
+		return createBlack(Type.KING);
+	}
+
+	public static Piece noPiece() {
+		return create(null, Type.NO_PIECE);
 	}
 }
 

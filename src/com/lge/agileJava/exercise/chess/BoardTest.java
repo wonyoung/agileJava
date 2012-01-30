@@ -16,11 +16,11 @@ public class BoardTest {
 	}
 	
 	public Piece createWhitePawn() {
-		return Piece.create(Piece.Color.WHITE, "pawn");
+		return Piece.create(Piece.Color.WHITE, Piece.Type.PAWN);
 	}
 	
 	public Piece createBlackPawn() {
-		return Piece.create(Piece.Color.BLACK, "pawn");
+		return Piece.create(Piece.Color.BLACK, Piece.Type.PAWN);
 	}	
 	
 	@Test
