@@ -36,5 +36,12 @@ public class BoardTest {
 				StringUtil.appendNewLine("rnbqkbnr") ,
 				board.print());
 	}
+	
+	@Test
+	public void testGetNumberofPieces() {
+		board.initialize();
+		assertEquals(2, board.getNumberofPieces(Piece.Color.WHITE, Piece.Type.BISHOP));
+		assertEquals(8, board.getNumberofPieces(Piece.Color.WHITE, Piece.Type.PAWN));
+	}
 
 }

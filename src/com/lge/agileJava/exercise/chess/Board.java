@@ -2,6 +2,8 @@ package com.lge.agileJava.exercise.chess;
 
 import java.util.ArrayList;
 import com.lge.agileJava.exercise.pieces.Piece;
+import com.lge.agileJava.exercise.pieces.Piece.Color;
+import com.lge.agileJava.exercise.pieces.Piece.Type;
 
 /**
  * Board class for chess game world.
@@ -10,7 +12,7 @@ import com.lge.agileJava.exercise.pieces.Piece;
  *
  */
 public class Board {
-	private ArrayList<Piece> pawns = new ArrayList<Piece>();
+	private ArrayList<Piece> pieces = new ArrayList<Piece>();
 	private ArrayList<Piece> firstRanks = new ArrayList<Piece>();
 	private ArrayList<Piece> secondRanks = new ArrayList<Piece>();
 	private ArrayList<Piece> seventhRanks = new ArrayList<Piece>();
@@ -30,7 +32,7 @@ public class Board {
 	 * @param pawn
 	 */
 	public void add(Piece pawn) {
-		pawns.add(pawn);
+		pieces.add(pawn);
 		if (pawn.getColor() == Piece.Color.BLACK) {
 			if (firstRanks.size() < 8) {
 				firstRanks.add(pawn);
@@ -55,7 +57,7 @@ public class Board {
 	 * @return
 	 */
 	public Piece get(int index) {
-		return pawns.get(index);
+		return pieces.get(index);
 	}
 	
 	public void initialize() {
@@ -109,6 +111,7 @@ public class Board {
 
 		return string.toString();
 	}
+	
 	public String print() {
 		StringBuilder buffer = new StringBuilder();
 
@@ -123,5 +126,14 @@ public class Board {
 		buffer.append(StringUtil.appendNewLine(get8thRank()));
 		
 		return buffer.toString();
+	}
+	
+	public int getNumberofPieces(Color color, Type type) {
+		int count = 0;
+		for (Piece piece : pieces) {
+			if (piece.getColor() == color && piece.getType() == type)
+				count++;
+		}
+		return count;
 	}
 }
