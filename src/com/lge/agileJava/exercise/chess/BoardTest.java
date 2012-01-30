@@ -16,14 +16,6 @@ public class BoardTest {
 		board = new Board();
 	}
 	
-	public Piece createWhitePawn() {
-		return Piece.create(Piece.Color.WHITE, Piece.Type.PAWN);
-	}
-	
-	public Piece createBlackPawn() {
-		return Piece.create(Piece.Color.BLACK, Piece.Type.PAWN);
-	}	
-	
 	@Test
 	public void testCreate() {
 		board.initialize();
@@ -52,5 +44,22 @@ public class BoardTest {
 		assertEquals(Piece.Type.ROOK, board.retrievePiece("a8").getType());
 		assertTrue(board.retrievePiece("e1").isWhite());
 		assertEquals(Piece.Type.KING, board.retrievePiece("e1").getType());
+	}
+	
+	@Test
+	public void testCreateArbitaryPosition() {
+		board.setEmpty();
+		board.set(Piece.createWhiteKing(), "c4");
+		board.set(Piece.createBlackKing(), "b6");
+		board.set(Piece.createBlackRook(), "b5");
+		assertEquals(3, board.pieceCount());
+		String blankRank = StringUtil.appendNewLine("........");
+		assertEquals(
+				blankRank + blankRank +
+				StringUtil.appendNewLine(".K......") +
+				StringUtil.appendNewLine(".R......") +
+				StringUtil.appendNewLine("..k.....") +
+				blankRank + blankRank + blankRank,
+				board.print());		
 	}
 }
