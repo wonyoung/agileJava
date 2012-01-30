@@ -8,6 +8,7 @@ package com.lge.agileJava.exercise.pieces;
  */
 public class Piece {
 	public enum Color { WHITE, BLACK };
+	enum Type { PAWN, ROOK, KNIGHT, BISHOP, QUEEN, KING };  
 	private static int count;
 
 	private Color color;
