@@ -134,7 +134,7 @@ public class Piece {
 	}
 
 	public static Piece noPiece() {
-		return create(null, Type.NO_PIECE);
+		return new Piece(null, Type.NO_PIECE);
 	}
 }
 

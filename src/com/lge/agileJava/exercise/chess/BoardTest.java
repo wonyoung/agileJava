@@ -1,6 +1,7 @@
 package com.lge.agileJava.exercise.chess;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -44,4 +45,12 @@ public class BoardTest {
 		assertEquals(8, board.getNumberofPieces(Piece.Color.WHITE, Piece.Type.PAWN));
 	}
 
+	@Test
+	public void testRetrievePiece() {
+		board.initialize();
+		assertTrue(board.retrievePiece("a8").isBlack());
+		assertEquals(Piece.Type.ROOK, board.retrievePiece("a8").getType());
+		assertTrue(board.retrievePiece("e1").isWhite());
+		assertEquals(Piece.Type.KING, board.retrievePiece("e1").getType());
+	}
 }
