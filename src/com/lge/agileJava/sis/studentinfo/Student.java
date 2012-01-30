@@ -10,14 +10,13 @@ public class Student {
 	private String name;
 	private int credits;
 	private String state = "";
+	private GradingStrategy gradingStrategy = new RegularGradingStrategy();
 	
 	public Student(String name) {
-		// TODO Auto-generated constructor stub
 		this.name = name;
 	}
 
 	public String getName() {
-		// TODO Auto-generated method stub
 		return name;
 	}
 
@@ -46,20 +45,19 @@ public class Student {
 			return 0.0;
 		double total = 0.0;
 		for (Grade grade: grades)
-			total += gradePointsFor(grade);
+			total += gradingStrategy.getGradePointsFor(grade);
 		return total / grades.size();
-	}
-
-	int gradePointsFor(Grade grade) {
-		if (grade == Grade.A) return 4;
-		if (grade == Grade.B) return 3;
-		if (grade == Grade.C) return 2;
-		if (grade == Grade.D) return 1;
-		return 0;
 	}
 
 	public void addGrade(Grade grade) {
 		grades.add(grade);
+	}
+
+	void setHonors() {		
+	}
+
+	void setGradingStrategy(GradingStrategy gradingStrategy) {
+		this.gradingStrategy  = gradingStrategy;		
 	}
 
 }

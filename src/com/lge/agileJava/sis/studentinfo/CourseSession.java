@@ -102,6 +102,7 @@ public class CourseSession implements Comparable<CourseSession> {
 		this.numberOfCredits = numberOfCredits;
 	}
 
+	@Override
 	public int compareTo(CourseSession that) {
 		int compare = this.getDepartment().compareTo(that.getDepartment());
 		if (compare == 0) {
