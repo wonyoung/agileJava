@@ -1,12 +1,13 @@
 package com.lge.agileJava.sis.studentinfo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Student {
 	enum Grade { A, B, C, D, F };
 	static final int CREDITS_REQUIRED_FOR_FULL_TIME = 12;
 	static final String IN_STATE = "CO";
-	private ArrayList<Grade> grades = new ArrayList<Grade>();
+	private List<Grade> grades = new ArrayList<Grade>();
 	private String name;
 	private int credits;
 	private String state = "";

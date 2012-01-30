@@ -3,11 +3,12 @@ package com.lge.agileJava.sis.report;
 import static com.lge.agileJava.sis.report.ReportConstant.NEWLINE;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import com.lge.agileJava.sis.studentinfo.CourseSession;
 
 public class CourseReport {
-	private ArrayList<CourseSession> sessions = 
+	private List<CourseSession> sessions = 
 			new ArrayList<CourseSession>();
 
 	public void add(CourseSession session) {

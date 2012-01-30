@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -32,7 +33,7 @@ public class CourseReportTest {
 	
 	@Test
 	public void testSortStringsInPlace() {
-		ArrayList<String> list = new ArrayList<String>();
+		List<String> list = new ArrayList<String>();
 		list.add("Heller");
 		list.add("Kafka");
 		list.add("Camus");
