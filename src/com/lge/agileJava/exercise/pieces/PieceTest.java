@@ -54,4 +54,15 @@ public class PieceTest {
 		assertFalse(piece2.isWhite());
 		assertTrue(piece2.isBlack());
 	}	
+	
+	@Test
+	public void testComparable() {
+		Piece piece1 = Piece.createWhitePawn();
+		piece1.setStrength(1.0);
+		Piece piece2 = Piece.createWhiteKnight();
+		piece2.setStrength(5.0);
+		
+		assertTrue(piece1.compareTo(piece2) < 0);
+		assertTrue(piece2.compareTo(piece1) > 0);
+	}
 }

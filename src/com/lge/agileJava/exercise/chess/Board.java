@@ -1,6 +1,7 @@
 package com.lge.agileJava.exercise.chess;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import com.lge.agileJava.exercise.pieces.Piece;
 import com.lge.agileJava.exercise.pieces.Piece.Color;
@@ -20,6 +21,8 @@ public class Board {
 	private static final double PAWN_STRENGTH = 1.0;
 	private static final double PAWN_SAME_FILE_STRENGTH = 0.5;
 	private ArrayList<Piece> pieces = new ArrayList<Piece>();
+	private ArrayList<Piece> whitePieces = new ArrayList<Piece>();
+	private ArrayList<Piece> blackPieces = new ArrayList<Piece>();
 	
 	Board() { }
 	/**
@@ -28,14 +31,6 @@ public class Board {
 	 */
 	public int pieceCount() {
 		return Piece.getCount();
-	}
-
-	/**
-	 * Add Pawn object to Board
-	 * @param pawn
-	 */
-	public void add(Piece pawn) {
-		pieces.add(pawn);
 	}
 
 	/**
@@ -120,7 +115,43 @@ public class Board {
 	}
 	
 	public void set(Piece piece, String location) {
-		pieces.set(getIndexAt(location), piece);
+		int index = getIndexAt(location);
+		pieces.set(index, piece);
+		double strength = 0.0;
+		if (piece.getType() == Type.ROOK)
+			strength = ROOK_STRENGTH;
+		else if (piece.getType() == Type.BISHOP)
+			strength = BISHOP_STRENGTH;
+		else if (piece.getType() == Type.QUEEN)
+			strength = QUEEN_STRENGTH;
+		else if (piece.getType() == Type.KNIGHT)
+			strength = KNIGHT_STRENGTH;
+		else if (piece.getType() == Type.PAWN) {
+			boolean isExistSameType = false;
+			for (int i=0;i<8;i++) {
+				if (index != i*8+(index%8)) {
+					Piece p = pieces.get(i*8+(index%8));
+					if (p.getColor() == piece.getColor()
+							&& p.getType() == piece.getType()) {
+						p.setStrength(PAWN_SAME_FILE_STRENGTH);
+						isExistSameType = true;
+					}
+				}
+			}
+			if (isExistSameType)
+				strength = PAWN_SAME_FILE_STRENGTH;
+			else
+				strength = PAWN_STRENGTH;
+		}
+		piece.setStrength(strength);
+		if (piece.isWhite()) {
+			whitePieces.add(piece);
+			Collections.sort(whitePieces);
+		}
+		else if (piece.isBlack()) {
+			blackPieces.add(piece);
+			Collections.sort(blackPieces);
+		}
 	}
 	private int getIndexAt(String location) {
 		int index;
@@ -131,28 +162,30 @@ public class Board {
 	public void setEmpty() {
 		Piece.resetCount();
 		for (int i=0; i<8*8;i++) {
-			add(Piece.noPiece());
+			pieces.add(Piece.noPiece());
 		}		
 	}
 	public double getStrength(Color color) {
 		double strength = 0.0;
 		for (Piece piece : pieces)
 			if (piece.getColor() == color)
-				if (piece.getType() == Type.ROOK)
-					strength += ROOK_STRENGTH;
-				else if (piece.getType() == Type.BISHOP)
-					strength += BISHOP_STRENGTH;
-				else if (piece.getType() == Type.QUEEN)
-					strength += QUEEN_STRENGTH;
-				else if (piece.getType() == Type.KNIGHT)
-					strength += KNIGHT_STRENGTH;
-				else if (piece.getType() == Type.PAWN) {
-					if (getNumberofSameFile(pieces.indexOf(piece), piece.getColor(), Type.PAWN) > 1)
-						strength += PAWN_SAME_FILE_STRENGTH;
-					else
-						strength += PAWN_STRENGTH;
-				}
-						
+				strength += piece.getStrength();
+		
+//				if (piece.getType() == Type.ROOK)
+//					strength += ROOK_STRENGTH;
+//				else if (piece.getType() == Type.BISHOP)
+//					strength += BISHOP_STRENGTH;
+//				else if (piece.getType() == Type.QUEEN)
+//					strength += QUEEN_STRENGTH;
+//				else if (piece.getType() == Type.KNIGHT)
+//					strength += KNIGHT_STRENGTH;
+//				else if (piece.getType() == Type.PAWN) {
+//					if (getNumberofSameFile(pieces.indexOf(piece), piece.getColor(), Type.PAWN) > 1)
+//						strength += PAWN_SAME_FILE_STRENGTH;
+//					else
+//						strength += PAWN_STRENGTH;
+//				}
+//						
 						
 
 //		strength = getNumberofPieces(color, Type.ROOK) * ROOK_STRENGTH;
@@ -162,14 +195,5 @@ public class Board {
 //		strength += getNumberofPieces(color, Type.PAWN) * PAWN_STRENGTH;
 		
 		return strength;
-	}
-	private int getNumberofSameFile(int index, Color color, Type type) {
-		int count=0;
-		for (Piece piece : pieces)
-			if (piece.getType() == type)
-				if (piece.getColor() == color)
-					if ((pieces.indexOf(piece) - index) % 8 == 0)
-						count++;
-		return count;
 	}
 }

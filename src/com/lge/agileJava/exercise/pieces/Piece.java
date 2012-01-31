@@ -6,7 +6,7 @@ package com.lge.agileJava.exercise.pieces;
  * @author wonyoung.jang
  *
  */
-public class Piece {
+public class Piece implements Comparable<Piece> {
 	public enum Color { WHITE, BLACK };
 	public enum Type { NO_PIECE, PAWN, ROOK, KNIGHT, BISHOP, QUEEN, KING }
 	static final char PAWN_REPRESENTATION = 'p';
@@ -20,6 +20,7 @@ public class Piece {
 	private Color color;
 	private Type type;
 	private char representation;
+	private double strength;
 	
 	public static int getCount() {
 		return count;
@@ -135,6 +136,19 @@ public class Piece {
 
 	public static Piece noPiece() {
 		return new Piece(null, Type.NO_PIECE);
+	}
+
+	public double getStrength() {
+		return strength;
+	}
+
+	public void setStrength(double strength) {
+		this.strength = strength;
+	}
+
+	@Override
+	public int compareTo(Piece o) {
+		return Double.compare(this.getStrength(), o.getStrength());
 	}
 }
 
