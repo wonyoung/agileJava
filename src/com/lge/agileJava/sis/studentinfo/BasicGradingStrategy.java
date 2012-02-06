@@ -2,9 +2,11 @@ package com.lge.agileJava.sis.studentinfo;
 
 import com.lge.agileJava.sis.studentinfo.Student;
 
-abstract public class BasicGradingStrategy implements GradingStrategy {
+public class BasicGradingStrategy implements GradingStrategy {
 	@Override
-	abstract public int getGradePointsFor(Student.Grade grade);
+	public int getGradePointsFor(Student.Grade grade) {
+		return basicGradePointsFor(grade);
+	}
 	
 	protected int basicGradePointsFor(Student.Grade grade) {
 		switch (grade) {

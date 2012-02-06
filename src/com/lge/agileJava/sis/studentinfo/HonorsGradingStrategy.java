@@ -5,7 +5,7 @@ import com.lge.agileJava.sis.studentinfo.Student.Grade;
 public class HonorsGradingStrategy extends BasicGradingStrategy {
 	@Override
 	public int getGradePointsFor(Grade grade) {
-		int points = basicGradePointsFor(grade);
+		int points = super.getGradePointsFor(grade);
 		if (points > 0)
 			points += 1;
 		return points;
