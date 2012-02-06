@@ -83,13 +83,16 @@ public class CourseSession implements Comparable<CourseSession> {
 		// TODO Auto-generated method stub
 		GregorianCalendar calendar = new GregorianCalendar();
 		calendar.setTime(getStartDate());
-		final int sessionLength = 16;
 		final int daysInWeek = 7;
 		final int daysFromFridayToMonday = 3;
-		int numberOfDays = sessionLength * daysInWeek - daysFromFridayToMonday;
+		int numberOfDays = getSessionLength() * daysInWeek - daysFromFridayToMonday;
 		calendar.add(Calendar.DAY_OF_YEAR, numberOfDays);
 		
 		return calendar.getTime();
+	}
+
+	protected int getSessionLength() {
+		return 16;
 	}
 
 	protected Date getStartDate() {
