@@ -23,7 +23,7 @@ public class CourseSession implements Comparable<CourseSession> {
 	 * @param number
 	 * @param startDate the date on which the CourseSession begins
 	 */
-	private CourseSession(String department, String number, Date startDate) {
+	protected CourseSession(String department, String number, Date startDate) {
 		// TODO Auto-generated constructor stub
 		this.department = department;
 		this.number = number;
@@ -79,18 +79,17 @@ public class CourseSession implements Comparable<CourseSession> {
 	 * 
 	 * @return Date the last date of the course session
 	 */
-	Date getEndDate() {
+	public Date getEndDate() {
 		// TODO Auto-generated method stub
 		GregorianCalendar calendar = new GregorianCalendar();
-		calendar.setTime(startDate);
+		calendar.setTime(getStartDate());
 		int numberOfDays = 16 * 7 - 3;	// weeks * days per week - 3 days
 		calendar.add(Calendar.DAY_OF_YEAR, numberOfDays);
 		
 		return calendar.getTime();
 	}
 
-	Date getStartDate() {
-		// TODO Auto-generated method stub
+	protected Date getStartDate() {
 		return startDate;
 	}
 
