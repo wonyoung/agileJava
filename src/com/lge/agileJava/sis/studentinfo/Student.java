@@ -11,7 +11,7 @@ public class Student {
 	private String name;
 	private int credits;
 	private String state = "";
-	private GradingStrategy gradingStrategy = new RegularGradingStrategy();
+	private GradingStrategy gradingStrategy = new BasicGradingStrategy();
 	
 	public Student(String name) {
 		this.name = name;
