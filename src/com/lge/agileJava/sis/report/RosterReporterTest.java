@@ -7,12 +7,13 @@ import org.junit.Test;
 
 import com.lge.agileJava.sis.studentinfo.CourseSession;
 import com.lge.agileJava.sis.studentinfo.DateUtil;
+import com.lge.agileJava.sis.studentinfo.Session;
 import com.lge.agileJava.sis.studentinfo.Student;
 
 public class RosterReporterTest {
 	@Test
 	public void testRosterReport() {
-		CourseSession session = CourseSession.create("ENGL", "101", DateUtil.createDate(2003, 1, 6));
+		Session session = CourseSession.create("ENGL", "101", DateUtil.createDate(2003, 1, 6));
 		session.enroll(new Student("A"));
 		session.enroll(new Student("B"));
 		

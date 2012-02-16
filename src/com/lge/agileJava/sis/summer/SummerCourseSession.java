@@ -2,9 +2,9 @@ package com.lge.agileJava.sis.summer;
 
 import java.util.Date;
 
-import com.lge.agileJava.sis.studentinfo.CourseSession;
+import com.lge.agileJava.sis.studentinfo.Session;
 
-public class SummerCourseSession extends CourseSession {
+public class SummerCourseSession extends Session {
 	public static SummerCourseSession create(
 			String department,
 			String number,

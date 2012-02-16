@@ -1,6 +1,6 @@
 package com.lge.agileJava.sis.report;
 
-import com.lge.agileJava.sis.studentinfo.CourseSession;
+import com.lge.agileJava.sis.studentinfo.Session;
 import com.lge.agileJava.sis.studentinfo.Student;
 import static com.lge.agileJava.sis.report.ReportConstant.NEWLINE;
 
@@ -8,9 +8,9 @@ public class RosterReporter {
 	static final String ROSTER_REPORT_HEADER = "Student" + NEWLINE + "----" + NEWLINE;
 	static final String ROSTER_REPORT_FOOTER = NEWLINE + "# students = ";
 
-	private CourseSession session;
+	private Session session;
 	
-	public RosterReporter(CourseSession session) {
+	public RosterReporter(Session session) {
 		this.session = session;
 	}
 	

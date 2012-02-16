@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 import com.lge.agileJava.sis.studentinfo.CourseSession;
+import com.lge.agileJava.sis.studentinfo.Session;
 
 public class CourseReport {
 	private List<CourseSession> sessions = 
@@ -18,7 +19,7 @@ public class CourseReport {
 	public String text() {
 		Collections.sort(sessions);
 		StringBuilder builder = new StringBuilder();
-		for (CourseSession session: sessions) {
+		for (Session session: sessions) {
 			builder.append(
 					session.getDepartment() + " " +
 			session.getNumber() + NEWLINE);
